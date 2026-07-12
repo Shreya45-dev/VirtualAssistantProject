@@ -2,7 +2,7 @@ const mongoose=require('mongoose')
 
 
 function connectDB(){
-    mongoose.connect("mongodb://localhost:27017/chatai")
+    mongoose.connect(MONGODB_URL)
     .then(()=>{
         console.log("Mongodb connected")
     })
