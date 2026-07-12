@@ -83,7 +83,7 @@ const Assistantphoto = () => {
   try{
     const res = await axios.post(
       
-      `${API_URL}/api/auth/user/addphoto`,
+      `${import.meta.env.API_URL}/api/auth/user/addphoto`,
       { assistantphoto },
       { withCredentials: true }
     );

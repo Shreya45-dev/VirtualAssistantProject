@@ -23,7 +23,7 @@ const form = useRef();
 
 
    try{
-    const response=await axios.post(`API_URL/api/auth/user/register`,
+    const response=await axios.post(`${import.meta.env.API_URL}/api/auth/user/register`,
       {
         author_name:first+" "+second,
         email,

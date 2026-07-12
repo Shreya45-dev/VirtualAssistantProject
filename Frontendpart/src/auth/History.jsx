@@ -8,7 +8,7 @@ const History = () => {
     const getMessage = async () => {
       try {
         const res = await axios.get(
-          `${API_URL}/api/auth/allMessages`,
+          `${import.meta.env.API_URL}/api/auth/allMessages`,
           {
             withCredentials: true,
           }

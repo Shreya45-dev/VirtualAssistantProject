@@ -18,7 +18,7 @@ const AssistantName = () => {
       setMessage("");
 
       const res = await axios.post(
-        `${API_URL}/api/auth/assistantname`,
+        `${import.meta.env.API_URL}/api/auth/assistantname`,
         { assistantName },
         { withCredentials: true }
       );

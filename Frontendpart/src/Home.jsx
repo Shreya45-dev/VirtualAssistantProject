@@ -378,7 +378,7 @@ const Home = () => {
   const hello = async (text) => {
     try {
       const res = await axios.post(
-        `${API_URL}/api/auth/user/ask`,
+        `${import.meta.env.API_URL}/api/auth/user/ask`,
         { command: text },
         { withCredentials: true }
       )
