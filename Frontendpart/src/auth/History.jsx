@@ -61,7 +61,7 @@ const History = () => {
 
           <div className="space-y-5">
 
-            {message.map((msg) => (
+            {message && message.map((msg) => (
 
               <div
                 key={msg._id}
