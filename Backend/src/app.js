@@ -32,7 +32,7 @@ const app = express();
 
 // 🔹 Middleware
 app.use(cors({
-  origin: "http://localhost:5173", // frontend URL
+  origin: "https://virtualassistantproject-1.onrender.com", // frontend URL
   credentials: true
 }));
 app.use(express.json());
