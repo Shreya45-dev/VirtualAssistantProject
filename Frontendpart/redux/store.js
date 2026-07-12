@@ -13,9 +13,8 @@ const rootReducer = combineReducers({
 });
 
 const persistConfig = {
-  key: "root",
-  storage,
-  blacklist: ["socket"], // socket persist mat karo
+  key: "virtualassistant",
+  storage
 };
 
 const persistedReducer = persistReducer(
