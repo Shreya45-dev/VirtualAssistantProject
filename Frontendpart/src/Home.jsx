@@ -378,7 +378,7 @@ const Home = () => {
   const hello = async (text) => {
     try {
       const res = await axios.post(
-        `${import.meta.env.API_URL}/api/auth/user/ask`,
+        `${import.meta.env.VITE_API_URL}/api/auth/user/ask`,
         { command: text },
         { withCredentials: true }
       )
@@ -432,7 +432,7 @@ const Home = () => {
       console.log(result)
       if(result!==""){
       try{
-    const res=await axios.post(`${API_URL}/api/auth/assistantMessage`,
+    const res=await axios.post(`${import.meta.env.VITE_API_URL}/api/auth/assistantMessage`,
       {result},
       {withCredentials:true}
     )

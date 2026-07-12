@@ -13,13 +13,13 @@ const navigate = useNavigate()
 const dispatch=useDispatch()
   const [email, setemail] = useState('')
   const [password, setpassword] = useState('')
-
+console.log(import.meta.env.API_URL)
   const submithandle = async (e) => {
         e.preventDefault()
 
         try {
             const response = await axios.post(
-       `${import.meta.env.API_URL}/api/auth/user/login`,
+       `${import.meta.env.VITE_API_URL}/api/auth/user/login`,
         { email, password },
         { withCredentials: true }
       )
@@ -30,7 +30,7 @@ const dispatch=useDispatch()
       dispatch(setAuthUser(response.data.user))
 
     } catch (error) {
-      console.log(error)
+      console.log(error.response.data)
       alert("Login failed ❌")
         }
     }
