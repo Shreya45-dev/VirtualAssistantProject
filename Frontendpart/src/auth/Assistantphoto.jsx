@@ -67,6 +67,26 @@ const Assistantphoto = () => {
     {
       img: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSXXyYOdJxNrNg3nijKxFfrhOt99MLQUA7ZipfEp9XzNg&s=10",
     },
+    {
+      img:"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSENUlTY8g-gi9a-W8ujPaB8Uuqd-JuGJUZSqLW8dkTFw&s=10"
+    },
+    {
+      img:"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRhWLACBypu3rYSh6DcScDvKd-8ELKb0Cx2NtksiybJUQ&s=10"
+    },
+    {
+      img:"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTiGPvQccx3R5B0UQ1sPbLMS_KrtP6Vxwv1cBOREmxsFg&s=10"
+    },
+    {
+      img:"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSHH9oUopTRsQ875SVM_ORICsFbrJxE8mSnnDI7NOyXkw&s=10"
+    },
+
+
+    {
+      img:"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSjv_vSC_K7y9ywYgrYvNtSKMboWRMlaY6TMq09sx2LbA&s=10"
+    },
+    {
+      img:"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS-g2gu8eCCVITcJDijnh1hDHxDeQ31rUIuL8wcOBNo2A&s=10"
+    }
   ];
 
   const [assistantphoto, setassistantphoto] = useState("");
@@ -101,8 +121,8 @@ const Assistantphoto = () => {
   };
 
   return (
-    <div className="min-h-screen bg-gray-100 flex flex-col items-center py-10">
-      <h1 className="text-3xl font-bold text-gray-700 mb-8">
+    <div className="min-h-screen bg-black flex flex-col items-center py-10">
+      <h1 className="text-3xl font-bold text-purple-700 mb-8">
         Choose Assistant Photo
       </h1>
 
