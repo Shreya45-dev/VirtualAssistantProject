@@ -219,6 +219,7 @@ export default Home
 import axios from 'axios'
 import React, { useEffect, useState, useRef } from 'react'
 import { useSelector } from 'react-redux';
+import { GiHamburgerMenu } from "react-icons/gi";
 import {Link} from 'react-router-dom'
 
 const Home = () => {
@@ -543,7 +544,7 @@ useEffect(() => {
   }, [])
 
 const openbox=<div className="h-40 w-56 absolute z-5 flex flex-col items-center justify-center bg-purple-300  ">
-  <h1 className="right-2 top-2" onClick={()=>setmenu(false)}>X</h1>
+  <h1 className="right-2 absolute top-2" onClick={()=>setmenu(false)}>X</h1>
   <Link to="/assistantname" className="hover:font-semibold hover:text-purple-800 hover:border-b-2">Choose Assistant name</Link>
   <Link to="/photo" className="hover:font-semibold hover:text-purple-800 hover:border-b-2">Choose Assistant photo</Link>
 </div>
@@ -713,7 +714,7 @@ getResult()
       <Link to="/photo" className="top-3 ml-[80vw] hidden sm:block px-3 py-1 bg-white rounded-xl text-purple-800">Choose Assistant's Photo</Link>
             <Link to="/assistantname" className="top-3 ml-[80vw] hidden sm:block px-3 py-1 mt-4 bg-white rounded-xl text-purple-800">Choose Assistant's name</Link>
             <Link to="/history" className="absolute z-2 left-4  top-5 text-black px-2 py-1 bg-gray-400 rounded-xl">history</Link>
-            <h1 onClick={()=>setmenu(true)}className="top-3 ml-[80vw] block sm:hidden px-3 py-1 mt-4 bg-white rounded-xl bg-blue-500">menu</h1>
+            <h1 onClick={()=>setmenu(true)}className="top-3 ml-[80vw] block sm:hidden px-3 py-1 mt-4  rounded-xl "><GiHamburgerMenu className="text-2xl text-purple-800=0" /></h1>
                         {menu ? openbox:""}
             
     <img className="h-56 w-64  sm:h-60 sm:w-72 rounded-[50%] "src={user?.assistantphoto}/>
