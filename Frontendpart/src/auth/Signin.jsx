@@ -141,20 +141,21 @@ const Signin = () => {
   };
 
   return (
-    <div className="min-h-screen bg-gray-200 flex justify-center items-center">
-      <div className="bg-white w-96 p-6 rounded border border-gray-400">
+    <div className="min-h-screen flex justify-center items-center bg-gradient-to-r from-blue-500 via-purple-500 to-pink-500">
 
-        <h1 className="text-3xl font-bold text-center mb-2">
+      <div className="bg-white w-96 rounded-xl p-8">
+
+        <h1 className="text-4xl font-bold text-center text-purple-700 mb-2">
           Sign Up
         </h1>
 
-        <p className="text-center text-gray-600 mb-5">
+        <p className="text-center text-gray-500 mb-6">
           Create your account
         </p>
 
         <form onSubmit={submitHandler}>
 
-          <label className="block mb-1 font-medium">
+          <label className="font-semibold text-gray-700">
             First Name
           </label>
 
@@ -162,11 +163,11 @@ const Signin = () => {
             type="text"
             value={first}
             onChange={(e) => setFirst(e.target.value)}
-            className="w-full border border-gray-400 p-2 mb-4 rounded"
+            className="w-full border p-2 rounded mt-2 mb-4 focus:outline-none focus:border-purple-500"
             required
           />
 
-          <label className="block mb-1 font-medium">
+          <label className="font-semibold text-gray-700">
             Last Name
           </label>
 
@@ -174,11 +175,11 @@ const Signin = () => {
             type="text"
             value={second}
             onChange={(e) => setSecond(e.target.value)}
-            className="w-full border border-gray-400 p-2 mb-4 rounded"
+            className="w-full border p-2 rounded mt-2 mb-4 focus:outline-none focus:border-purple-500"
             required
           />
 
-          <label className="block mb-1 font-medium">
+          <label className="font-semibold text-gray-700">
             Email
           </label>
 
@@ -186,11 +187,11 @@ const Signin = () => {
             type="email"
             value={email}
             onChange={(e) => setEmail(e.target.value)}
-            className="w-full border border-gray-400 p-2 mb-4 rounded"
+            className="w-full border p-2 rounded mt-2 mb-4 focus:outline-none focus:border-purple-500"
             required
           />
 
-          <label className="block mb-1 font-medium">
+          <label className="font-semibold text-gray-700">
             Password
           </label>
 
@@ -198,30 +199,31 @@ const Signin = () => {
             type="password"
             value={password}
             onChange={(e) => setPassword(e.target.value)}
-            className="w-full border border-gray-400 p-2 mb-5 rounded"
+            className="w-full border p-2 rounded mt-2 mb-6 focus:outline-none focus:border-purple-500"
             required
           />
 
           <button
             type="submit"
-            className="w-full bg-blue-600 text-white p-2 rounded"
+            className="w-full bg-gradient-to-r from-indigo-500 to-pink-500 text-white font-semibold py-2 rounded hover:opacity-90"
           >
-            Sign Up
+            Create Account
           </button>
 
         </form>
 
-        <p className="text-center mt-4">
-          Already Registered?{" "}
+        <p className="text-center mt-6 text-gray-600">
+          Already have an account?{" "}
           <Link
             to="/user/login"
-            className="text-blue-600 font-semibold"
+            className="text-purple-700 font-semibold hover:underline"
           >
             Login
           </Link>
         </p>
 
       </div>
+
     </div>
   );
 };
