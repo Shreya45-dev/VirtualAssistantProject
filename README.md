@@ -199,7 +199,7 @@ Virtual-Assistant/
 │   │   ├── assets/
 │   │   │
 │   │   ├── auth/
-│   │   │   ├── Home.jsx
+│   │   │   |
 │   │   │   ├── Login.jsx
 │   │   │   ├── Signin.jsx
 │   │   │   ├── Assistantphoto.jsx
@@ -210,6 +210,8 @@ Virtual-Assistant/
 │   │   │  
 │   │   │  
 │   │   │
+│   │   │── Home.jsx
+│   │   │   
 │   │   ├── AppRoutes.jsx
 │   │   ├── App.jsx
 │   │   ├── App.css
