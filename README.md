@@ -185,6 +185,72 @@ Google Gemini is used for:
 - Learning assistance
 
 ---
+# 📂 Project Structure
+
+```text
+Virtual-Assistant/
+│
+├── Frontend/
+│   ├── public/
+│   │______redux
+│   │       ├── authSlice.js
+│   │       └── store.js
+│   ├── src/
+│   │   ├── assets/
+│   │   │
+│   │   ├── auth/
+│   │   │   ├── Home.jsx
+│   │   │   ├── Login.jsx
+│   │   │   ├── Signin.jsx
+│   │   │   ├── Assistantphoto.jsx
+│   │   │   ├── AssistantName.jsx
+│   │   │   └── History.jsx
+│   │   │
+│   │   ├
+│   │   │  
+│   │   │  
+│   │   │
+│   │   ├── AppRoutes.jsx
+│   │   ├── App.jsx
+│   │   ├── App.css
+│   │   ├── index.css
+│   │   └── main.jsx
+│   │
+│   ├── .env
+│   ├── package.json
+│   └── package-lock.json
+│
+├── Backend/
+│   ├── src/
+│   │   ├── controllers/
+│   │   │   ├── auth.controller.js
+│   │   │   └── user.controller.js
+│   │   │
+│   │   ├── middlewares/
+│   │   │   └── auth.middleware.js
+│   │   │
+│   │   ├── db/
+│   │   │   └── db.js
+│   │   │
+│   │   ├── models/
+│   │   │   ├── history.model.js
+│   │   │   └── user.model.js
+│   │   │
+│   │   ├── routes/
+│   │   │   └── auth.route.js
+│   │   │
+│   │   └── app.js
+│   │
+│   ├── gemini.js
+│   ├── server.js
+│   ├── .env
+│   ├── .gitignore
+│   ├── package.json
+│   └── package-lock.json
+│
+├── README.md
+└---Screenshots
+```
 
 # 🚀 Future Improvements
 
