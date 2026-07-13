@@ -254,6 +254,23 @@ VirtualAssistantProject/
 └---Screenshots
 ```
 
+# 🔑 Environment Variables
+
+Create a `.env` file inside the **server** folder.
+
+```env
+PORT=5000
+
+MONGODB_URL=your_mongodb_connection_string
+
+JWT_SECRET=your_jwt_secret
+
+GEMINI_API_URL=your_google_gemini_api_key
+```
+
+            
+
+
 # 🚀 Future Improvements
 
 - Dark Mode
