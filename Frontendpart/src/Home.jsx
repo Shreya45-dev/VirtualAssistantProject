@@ -542,10 +542,10 @@ useEffect(() => {
 
   }, [])
 
-const openbox=<div className="h-56 w-40 absolute z-5 flex items-center justify-center bg-purple-300   bg-black ">
+const openbox=<div className="h-56 w-40 absolute z-5 flex flex-col items-center justify-center bg-purple-300  ">
   <h1 onClick={()=>setmenu(false)}>X</h1>
-  <Link to="/assistantname">Choose Assistant name</Link>
-  <Link to="/photo">Choose Assistant photo</Link>
+  <Link to="/assistantname" className="hover:text-purple-800 hover:border-b-2">Choose Assistant name</Link>
+  <Link to="/photo" className="hover:text-purple-800 hover:border-b-2">Choose Assistant photo</Link>
 </div>
 // Assistant Voice
 const speak = (text) => {
