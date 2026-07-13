@@ -13,7 +13,7 @@ const navigate = useNavigate()
 const dispatch=useDispatch()
   const [email, setemail] = useState('')
   const [password, setpassword] = useState('')
-console.log(import.meta.env.API_URL)
+
   const submithandle = async (e) => {
         e.preventDefault()
 

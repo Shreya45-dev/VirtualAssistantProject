@@ -464,13 +464,13 @@ getResult()
     <> 
     <div className="sm:h-[50vh] [40vh] w-screen flex flex-col bg-black items-center justify-center">
       '
-      <h1 className="text-purple-800 text-4xl hidden sm:block font-semibold m-4 ">Hi I am  {user.assistantname} </h1>
+      <h1 className="text-purple-800 text-4xl hidden sm:block font-semibold m-4 ">Hi I am  {user?.assistantname} </h1>
       <Link to="/photo" className="top-3 ml-[80vw] hidden sm:block px-3 py-1 bg-white rounded-xl text-purple-800">Choose Assistant's Photo</Link>
             <Link to="/assistantname" className="top-3 ml-[80vw] hidden sm:block px-3 py-1 mt-4 bg-white rounded-xl text-purple-800">Choose Assistant's name</Link>
             <Link to="/history" className="absolute z-2 left-4  top-5 text-black px-2 py-1 bg-gray-400 rounded-xl">history</Link>
                         <Link to="/assistantname" className="top-3 ml-[80vw] block sm:hidden px-3 py-1 mt-4 bg-white rounded-xl bg-blue-500">history</Link>
             
-    <img className="h-56 w-64  sm:h-60 sm:w-72 rounded-[50%] "src={user.assistantphoto}/>
+    <img className="h-56 w-64  sm:h-60 sm:w-72 rounded-[50%] "src={user?.assistantphoto}/>
     
     </div>
 
