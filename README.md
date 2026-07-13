@@ -271,6 +271,17 @@ GEMINI_API_URL=your_google_gemini_api_key
 for frontend
 VITE_API_URL=your backend api           
 
+![signup Screen](Screenshots/signup.png)
+![photo](Screenshots/assistantphoto.png)
+![name](Screenshots/assistantname.png)
+![Login Screen](Screenshots/login.png)
+![mainpage Screen](Screenshots/mainpage.png)
+
+
+
+
+
+
 
 # 🚀 Future Improvements
 
