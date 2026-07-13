@@ -216,7 +216,6 @@ export default Home
 */
 
 
-/*
 import axios from 'axios'
 import React, { useEffect, useState, useRef } from 'react'
 import { useSelector } from 'react-redux';
@@ -227,7 +226,7 @@ const Home = () => {
  const [result,setresult]=useState("")
  const[ask,setask]=useState("")
  const user=useSelector((state)=>state.auth.user)
-  const [listening, setListening] = useState(false)
+  /*const [listening, setListening] = useState(false)
 
   const isSpeakingRef = useRef(false)
   const recognitionRef = useRef(null)
@@ -244,7 +243,7 @@ const Home = () => {
     } catch (e) {}
   }
 
- /* const speak = (text) => {
+ const speak = (text) => {
     const utterance = new SpeechSynthesisUtterance(text)
 
     isSpeakingRef.current = true
@@ -374,6 +373,240 @@ const Home = () => {
 
   }, [])
 
+*/
+
+const isSpeakingRef = useRef(false);
+const recognitionRef = useRef(null);
+const isRecognizingRef = useRef(false);
+
+const [listening, setListening] = useState(false);
+
+const synth = window.speechSynthesis;
+
+
+// Start Listening
+const startRecognition = () => {
+
+  const recognition = recognitionRef.current;
+
+  if (
+    !recognition ||
+    isRecognizingRef.current ||
+    isSpeakingRef.current
+  ) {
+    return;
+  }
+
+
+  try {
+
+    recognition.start();
+
+  } catch (error) {
+
+    console.log(error);
+
+  }
+
+};
+
+
+
+// Stop Listening
+const stopRecognition = () => {
+
+  const recognition = recognitionRef.current;
+
+
+  if (recognition) {
+
+    recognition.stop();
+
+  }
+
+
+  isRecognizingRef.current = false;
+
+};
+const handleCommand = (data) => {
+    speak(data.response)
+
+    const query = encodeURIComponent(data.userInput || "")
+
+    if (data.type === 'google_search') {
+        window.location.href =
+      `https://www.google.com/search?q=${query}`
+    }
+
+    if (data.type === 'calculator_open') {
+        window.location.href =
+      `https://www.google.com/search?q=calculator`
+    }
+
+    if (data.type === 'instagram-open') {
+        window.location.href =
+      `https://www.instagram.com/`
+    }
+
+    if (data.type === 'facebook-open') {
+        window.location.href =
+      `https://www.facebook.com/`
+    }
+
+    if (data.type === 'weather-show') {
+        window.location.href =
+    `https://www.google.com/search?q=weather`
+    }
+
+    if (data.type === 'youtube-search' || data.type === 'youtube-play') {
+      window.location.href =
+        `https://www.youtube.com/results?search_query=${query}`
+    }
+  }
+
+useEffect(() => {
+
+    const SpeechRecognition =
+      window.SpeechRecognition || window.webkitSpeechRecognition
+
+    if (!SpeechRecognition) return
+
+    const recognition = new SpeechRecognition()
+
+    recognition.continuous = true
+    recognition.interimResults = false
+    recognition.lang = 'en-US'
+
+    recognitionRef.current = recognition
+
+    recognition.onstart = () => {
+      isRecognizingRef.current = true
+      setListening(true)
+      console.log("started")
+    }
+
+    recognition.onend = () => {
+      isRecognizingRef.current = false
+      setListening(false)
+      console.log("ended")
+
+      // restart safely
+      if (!isSpeakingRef.current) {
+        setTimeout(() => {
+          startRecognition()
+        }, 1500)
+      }
+    }
+
+    recognition.onerror = (event) => {
+      console.warn("error:", event.error)
+
+      isRecognizingRef.current = false
+      setListening(false)
+
+      if (event.error === "no-speech") {
+        setTimeout(() => startRecognition(), 1500)
+      }
+    }
+
+    recognition.onresult = async (e) => {
+
+      const result = e.results[e.results.length - 1]
+
+      if (!result.isFinal) return
+
+      const transcript = result[0].transcript.trim()
+
+      console.log("heard:", transcript)
+
+      //if (transcript.toLowerCase().includes(user.assistantname)) {
+          console.log(user.assistname)
+        recognition.stop()
+        isRecognizingRef.current = false
+        setListening(false)
+
+        const data = await hello(transcript)
+
+        if (data) handleCommand(data)
+    //  }
+    }
+
+    // START ONLY ONCE
+    setTimeout(() => {
+      startRecognition()
+    }, 1000)
+
+    return () => {
+      recognition.stop()
+    }
+
+  }, [])
+
+
+// Assistant Voice
+const speak = (text) => {
+
+
+  // stop mic before speaking
+  stopRecognition();
+
+
+  // clear old speech
+  synth.cancel();
+
+
+
+  const utterance =
+    new SpeechSynthesisUtterance(text);
+
+
+
+  utterance.lang = "en-US";
+
+  utterance.rate = 1;
+
+  utterance.pitch = 1;
+
+
+
+  isSpeakingRef.current = true;
+
+
+
+  utterance.onstart = () => {
+
+    console.log("Assistant speaking");
+
+  };
+
+
+
+  utterance.onend = () => {
+
+
+    console.log("Assistant finished");
+
+
+    isSpeakingRef.current = false;
+
+
+
+    // wait for echo to disappear
+
+    setTimeout(() => {
+
+      startRecognition();
+
+    },1000);
+
+
+  };
+
+
+
+  synth.speak(utterance);
+
+};
 
  
   
@@ -513,7 +746,6 @@ getResult()
   
 export default Home
 
-*/
 
 
 
@@ -522,221 +754,3 @@ export default Home
 
 
 
-
-
-const [listening, setListening] = useState(false);
-
-const recognitionRef = useRef(null);
-const isSpeakingRef = useRef(false);
-const isRecognizingRef = useRef(false);
-
-const synth = window.speechSynthesis;
-
-
-// 🎤 Start microphone
-const startRecognition = () => {
-
-  const recognition = recognitionRef.current;
-
-  if (
-    !recognition ||
-    isRecognizingRef.current ||
-    isSpeakingRef.current
-  ) {
-    return;
-  }
-
-  try {
-    recognition.start();
-  } catch (error) {
-    console.log(error);
-  }
-};
-
-
-// 🛑 Stop microphone
-const stopRecognition = () => {
-
-  const recognition = recognitionRef.current;
-
-  if (recognition) {
-    recognition.stop();
-  }
-
-  isRecognizingRef.current = false;
-};
-
-
-// 🔊 Assistant voice
-const speak = (text) => {
-
-  // mic off while assistant speaks
-  stopRecognition();
-
-  // remove previous voice
-  synth.cancel();
-
-
-  const utterance =
-    new SpeechSynthesisUtterance(text);
-
-
-  utterance.lang = "en-US";
-  utterance.rate = 1;
-  utterance.pitch = 1;
-
-
-  isSpeakingRef.current = true;
-
-
-
-  utterance.onend = () => {
-
-    isSpeakingRef.current = false;
-
-
-    // wait a little so mobile echo doesn't happen
-    setTimeout(() => {
-
-      startRecognition();
-
-    },800);
-
-  };
-
-
-  synth.speak(utterance);
-
-};
-
-
-
-// 🎧 Speech Recognition Setup
-useEffect(()=>{
-
-
-const SpeechRecognition =
-window.SpeechRecognition ||
-window.webkitSpeechRecognition;
-
-
-
-if(!SpeechRecognition){
-
- alert("Your browser does not support voice");
- return;
-
-}
-
-
-
-const recognition =
-new SpeechRecognition();
-
-
-
-recognition.continuous = false;
-
-recognition.interimResults = false;
-
-recognition.lang="en-US";
-
-
-
-recognitionRef.current = recognition;
-
-
-
-recognition.onstart = ()=>{
-
- isRecognizingRef.current=true;
-
- setListening(true);
-
- console.log("Listening");
-
-};
-
-
-
-recognition.onend = ()=>{
-
- isRecognizingRef.current=false;
-
- setListening(false);
-
- console.log("Stopped");
-
-};
-
-
-
-
-recognition.onerror=(event)=>{
-
- console.log(
- "Speech error:",
- event.error
- );
-
- isRecognizingRef.current=false;
-
- setListening(false);
-
-};
-
-
-
-
-
-recognition.onresult = async(event)=>{
-
-
-if(isSpeakingRef.current)
-return;
-
-
-
-const transcript =
-event.results[0][0].transcript.trim();
-
-
-
-console.log(
-"User:",
-transcript
-);
-
-
-
-stopRecognition();
-
-
-
-const data =
-await hello(transcript);
-
-
-
-if(data){
-
- handleCommand(data);
-
-}
-
-
-
-};
-
-
-
-
-return()=>{
-
- recognition.stop();
-
-};
-
-
-
-},[]);
