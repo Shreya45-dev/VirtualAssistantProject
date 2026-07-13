@@ -36,7 +36,7 @@ const form = useRef();
         
     })
    // console.log(response.data.message)
-   console.log(response.data.user);
+   console.log(response.data);
 alert(JSON.stringify(response.data));
     navigate("/photo")
 
