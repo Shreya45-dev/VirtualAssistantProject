@@ -75,7 +75,7 @@ const dispatch=useDispatch()
           <p className="text-white text-sm text-center">
             Don’t have an account?{" "}
             <Link
-              to="/user/register"
+              to="/"
               className="text-yellow-300 font-semibold hover:underline"
             >
               Register
