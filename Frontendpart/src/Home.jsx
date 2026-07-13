@@ -383,7 +383,7 @@ const [listening, setListening] = useState(false);
 
 const synth = window.speechSynthesis;
 
-
+const[menu,setmenu]=useState(false)
 // Start Listening
 const startRecognition = () => {
 
@@ -542,7 +542,10 @@ useEffect(() => {
 
   }, [])
 
-
+const openbox=<div className="h-56 w-40 absolute z-5 flex items-center justify-center bg-purple-300   bg-black ">
+  <Link to="/assistantname">Choose Assistant name</Link>
+  <Link to="/photo">Choose Assistant photo</Link>
+</div>
 // Assistant Voice
 const speak = (text) => {
 
@@ -690,6 +693,11 @@ getResult()
   
  const [message, setMessage] = useState([])
  
+
+ 
+ const openmenu=()=>{
+   setmenu(true)
+ }
    
 
   
@@ -704,7 +712,7 @@ getResult()
       <Link to="/photo" className="top-3 ml-[80vw] hidden sm:block px-3 py-1 bg-white rounded-xl text-purple-800">Choose Assistant's Photo</Link>
             <Link to="/assistantname" className="top-3 ml-[80vw] hidden sm:block px-3 py-1 mt-4 bg-white rounded-xl text-purple-800">Choose Assistant's name</Link>
             <Link to="/history" className="absolute z-2 left-4  top-5 text-black px-2 py-1 bg-gray-400 rounded-xl">history</Link>
-                        <Link to="/assistantname" className="top-3 ml-[80vw] block sm:hidden px-3 py-1 mt-4 bg-white rounded-xl bg-blue-500">history</Link>
+                        <h1 onClick={openmenu}className="top-3 ml-[80vw] block sm:hidden px-3 py-1 mt-4 bg-white rounded-xl bg-blue-500">menu</h1>
             
     <img className="h-56 w-64  sm:h-60 sm:w-72 rounded-[50%] "src={user?.assistantphoto}/>
     
