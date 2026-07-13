@@ -188,7 +188,7 @@ Google Gemini is used for:
 # 📂 Project Structure
 
 ```text
-Virtual-Assistant/
+VirtualAssistantProject/
 │
 ├── Frontend/
 │   ├── public/
