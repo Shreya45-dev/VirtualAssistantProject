@@ -141,15 +141,15 @@ const Signin = () => {
   };
 
   return (
-    <div className="min-h-screen flex justify-center items-center bg-gradient-to-r from-pink-300 via-purple-300 to-purple-700">
+    <div className="min-h-screen flex justify-center items-center bg-gradient-to-r from-pink-004 via-purple-300 to-purple-800">
 
       <div className="bg-gradient-to-r from-pink-300 via-purple-400 to-purple-800 w-96 rounded-xl p-8">
 
-        <h1 className="text-4xl font-bold text-center text-purple-700 mb-2">
+        <h1 className="text-4xl font-bold text-center text-purple-800 mb-2">
           Sign Up
         </h1>
 
-        <p className="text-center text-gray-500 mb-6">
+        <p className="text-center text-black mb-6">
           Create your account
         </p>
 
@@ -212,11 +212,11 @@ const Signin = () => {
 
         </form>
 
-        <p className="text-center mt-6 text-gray-600">
+        <p className="text-center mt-6 text-black">
           Already have an account?{" "}
           <Link
             to="/user/login"
-            className="text-purple-700 font-semibold hover:underline"
+            className="text-black font-semibold hover:underline"
           >
             Login
           </Link>
