@@ -1,6 +1,6 @@
 
 
-import React, { useState,useRef } from 'react'
+/*import React, { useState,useRef } from 'react'
 import axios from 'axios'
 import {Link, useNavigate} from "react-router-dom"
 
@@ -90,4 +90,140 @@ alert(JSON.stringify(response.data));
 
 
 
-export default Signin
+export default Signin*/
+
+
+
+
+import React, { useState } from "react";
+import axios from "axios";
+import { Link, useNavigate } from "react-router-dom";
+
+const Signin = () => {
+  const navigate = useNavigate();
+
+  const [first, setFirst] = useState("");
+  const [second, setSecond] = useState("");
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+
+  const submitHandler = async (e) => {
+    e.preventDefault();
+
+    try {
+      const response = await axios.post(
+        `${import.meta.env.VITE_API_URL}/api/auth/user/register`,
+        {
+          author_name: first + " " + second,
+          email,
+          password,
+        },
+        {
+          withCredentials: true,
+        }
+      );
+
+      alert(response.data.message || "Registration Successful");
+
+      setFirst("");
+      setSecond("");
+      setEmail("");
+      setPassword("");
+
+      navigate("/photo");
+    } catch (error) {
+      if (error.response) {
+        alert(error.response.data.message);
+      } else {
+        alert("Server Error");
+      }
+    }
+  };
+
+  return (
+    <div className="min-h-screen bg-gray-200 flex justify-center items-center">
+      <div className="bg-white w-96 p-6 rounded border border-gray-400">
+
+        <h1 className="text-3xl font-bold text-center mb-2">
+          Sign Up
+        </h1>
+
+        <p className="text-center text-gray-600 mb-5">
+          Create your account
+        </p>
+
+        <form onSubmit={submitHandler}>
+
+          <label className="block mb-1 font-medium">
+            First Name
+          </label>
+
+          <input
+            type="text"
+            value={first}
+            onChange={(e) => setFirst(e.target.value)}
+            className="w-full border border-gray-400 p-2 mb-4 rounded"
+            required
+          />
+
+          <label className="block mb-1 font-medium">
+            Last Name
+          </label>
+
+          <input
+            type="text"
+            value={second}
+            onChange={(e) => setSecond(e.target.value)}
+            className="w-full border border-gray-400 p-2 mb-4 rounded"
+            required
+          />
+
+          <label className="block mb-1 font-medium">
+            Email
+          </label>
+
+          <input
+            type="email"
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
+            className="w-full border border-gray-400 p-2 mb-4 rounded"
+            required
+          />
+
+          <label className="block mb-1 font-medium">
+            Password
+          </label>
+
+          <input
+            type="password"
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
+            className="w-full border border-gray-400 p-2 mb-5 rounded"
+            required
+          />
+
+          <button
+            type="submit"
+            className="w-full bg-blue-600 text-white p-2 rounded"
+          >
+            Sign Up
+          </button>
+
+        </form>
+
+        <p className="text-center mt-4">
+          Already Registered?{" "}
+          <Link
+            to="/user/login"
+            className="text-blue-600 font-semibold"
+          >
+            Login
+          </Link>
+        </p>
+
+      </div>
+    </div>
+  );
+};
+
+export default Signin;
