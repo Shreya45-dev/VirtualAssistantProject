@@ -13,10 +13,10 @@ const form = useRef();
   const[password,setpassword]=useState("")
  
 
-
+ console.log(import.meta.env.VITE_API_URL)
 
   const submithandler=async(e)=>{
-  console.log(import.meta.env.VITE_API_URL)
+ 
    e.preventDefault()
     
 
