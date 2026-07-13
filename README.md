@@ -268,7 +268,8 @@ JWT_SECRET=your_jwt_secret
 GEMINI_API_URL=your_google_gemini_api_key
 ```
 
-            
+for frontend
+VITE_API_URL=your backend api           
 
 
 # 🚀 Future Improvements
