@@ -648,7 +648,7 @@ const speak = (text) => {
   
 
       setresult(res.data.response)
-
+      setask("")
       return res.data
 
     } catch (error) {
