@@ -143,7 +143,7 @@ const Signin = () => {
   return (
     <div className="min-h-screen flex justify-center items-center bg-gradient-to-r from-pink-300 via-purple-300 to-purple-700">
 
-      <div className="bg-gradient-to-r from-pink-700 via-purple-400 to-purple-800 w-96 rounded-xl p-8">
+      <div className="bg-gradient-to-r from-pink-300 via-purple-400 to-purple-800 w-96 rounded-xl p-8">
 
         <h1 className="text-4xl font-bold text-center text-purple-700 mb-2">
           Sign Up
