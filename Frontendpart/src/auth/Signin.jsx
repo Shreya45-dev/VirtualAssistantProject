@@ -16,7 +16,7 @@ const form = useRef();
 
 
   const submithandler=async(e)=>{
-  
+  console.log(import.meta.env.VITE_API_URL)
    e.preventDefault()
     
 
