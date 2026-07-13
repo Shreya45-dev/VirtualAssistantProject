@@ -18,8 +18,7 @@ console.log(import.meta.env.API_URL)
         e.preventDefault()
 
         try {
-            const response = await axios.post(
-       `${import.meta.env.VITE_API_URL}/api/auth/user/login`,
+            const response = await axios.post( `${import.meta.env.VITE_API_URL}/api/auth/user/login`,
         { email, password },
         { withCredentials: true }
       )
